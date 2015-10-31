@@ -124,6 +124,7 @@ handlers: function( event, handlers ) {
 
 	if ( delegateCount < handlers.length ) {
 		handlerQueue.push({ elem: this, handlers: handlers.slice( delegateCount ) });
+        
 	}
 	//返回handlerQueue数组对象
 	return handlerQueue;

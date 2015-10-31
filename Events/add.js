@@ -77,6 +77,7 @@ add: function( elem, types, handler, data, selector ) {
 			// when an event is called after a page has unloaded
 			//执行jQuery.event.dispatch函数 this->elem,arguments-原生事件对象
 			//当事件执行的时候执行eventHandle函数，在elemData.handle上面挂载了elem属性，指向elem
+            console.log(e.type);
 			return typeof jQuery !== core_strundefined && (!e || jQuery.event.triggered !== e.type) ?
 				jQuery.event.dispatch.apply( eventHandle.elem, arguments ) :
 				undefined;
