@@ -2,30 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <script type="text/javascript" src="jquery-1.4.min.js"></script>
+    <title>调用xhr.abort方法，请求状态为canceled</title>
+    <script type="text/javascript" src="2.0.3.js"></script>
 </head>
 <body>
 
-<script type="text/javascript">
+<input type="text" placeholder='sousuo'>
 
-    var xhr;
-    var fn = function(){
-        //上一个请求，如果已经回来了，不用中指
-        //如果还没有回来，客户端不再等待，
-        if(xhr && xhr.readyState != 4){
+<script type="text/javascript">
+    var xhr ;
+    $('input').on('input', function(){
+        var val = $(this).val();
+        //执行这里的时候，结果还没有回来，就不需要结果回来了        
+        xhr = $.ajax({
+            url: '2.0.3.js',
+            data: {keyword: val}
+        }).done(function(data){
+            console.log(data);          //jquery源码
+        }).fail(function(data){
+            console.log(data);         //带有回调方法的http对象 
+        });
+        if(xhr && xhr.readyState!=200){
             xhr.abort();
         }
 
-        xhr = $.ajax({
-            url: '2.0.3.js',
-            success: function(data) {
-                //do something
-            }
-        });
-    };
-
-    var interval = setInterval(fn, 500);
+    });
  
 </script>
     
