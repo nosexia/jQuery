@@ -5,9 +5,13 @@
     <title>Document</title>
 </head>
 <body>
+<input type="text" placeholder='搜搜'>
 </body>
-
-<script type="text/javascript"></script>
-
+<script type="text/javascript" src="2.0.3.js"></script>
+<script type="text/javascript">
+   $('input').on('input', function(){
+        console.log( $(this).val() ) ;
+   });
+</script>
 
 </html>

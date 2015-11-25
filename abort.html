@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-1.4.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var xhr;
+    var fn = function(){
+        //上一个请求，如果已经回来了，不用中指
+        //如果还没有回来，客户端不再等待，
+        if(xhr && xhr.readyState != 4){
+            xhr.abort();
+        }
+
+        xhr = $.ajax({
+            url: '2.0.3.js',
+            success: function(data) {
+                //do something
+            }
+        });
+    };
+
+    var interval = setInterval(fn, 500);
+ 
+</script>
+    
+</body>
+</html>

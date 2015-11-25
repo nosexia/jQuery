@@ -3,6 +3,7 @@ require([
 ],function($){
     //还原之前$为全局变量
     $.noConflict();
+    console.log($.fn.jquery);
 });
 
 //实现原理
