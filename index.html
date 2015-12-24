@@ -5,13 +5,18 @@
     <title>Document</title>
 </head>
 <body>
-<input type="text" placeholder='搜搜'>
+<form action="/">
+    <input type="text" placeholder='搜搜'>
+    <input type="text" value="test">
+    <input type="submit" value="提交">
+</form>
 </body>
-<script type="text/javascript" src="2.0.3.js"></script>
-<script type="text/javascript">
-   $('input').on('input', function(){
-        console.log( $(this).val() ) ;
-   });
+<script type="text/javascript" src="jquery-1.4.min.js"></script>
+<script type="text/javascript" src="jquery.placeholder.js"></script>
+<script>
+    $('body').find('input').placeholder({
+        customClass : 'gray01'
+    });
 </script>
 
 </html>
