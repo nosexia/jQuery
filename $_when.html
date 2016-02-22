@@ -7,6 +7,10 @@
 <body>
     <input type="button" value="dfd1">
     <input type="button" value="dfd2">
+    <input type="button" value="dfds">
+    <p>
+        使用$.then，判断多个dfd对象是否都dfd.resolve();
+    </p>
 </body>
 <script type="text/javascript" src="jquery.1.11.1.js"></script>
 <script type="text/javascript">
@@ -14,16 +18,7 @@
 
     var dfd2 = $.Deferred();
 
-    var dfdArray = [];
-
-    dfdArray.push(dfd1);
-
-    dfdArray.push(dfd2);
-
-
-    $.when.apply($, dfdArray).done(function(){
-        console.log('所有dfd完成');
-    });
+    
 
     $('input').eq(0).click(function(){
         dfd1.resolve();
@@ -33,6 +28,12 @@
         dfd2.resolve();
     });
 
+    $('input').eq(2).click(function(){
+        $.when(dfd1, dfd2).done(function(){
+            console.log('所有dfd完成');
+        });
+    });
+
     dfd1.done(function(){
         console.log('dfd1完成');
     });
@@ -40,5 +41,8 @@
     dfd2.done(function(){
         console.log('dfd2完成');
     });
+
+
+
 </script>
 </html>
