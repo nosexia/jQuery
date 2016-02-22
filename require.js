@@ -9,43 +9,6 @@
 /*global window, navigator, document, importScripts, setTimeout, opera */
 
 
-//这里只是为了搜集页面所有的_params函数中的参数（｛isGuest:1｝）,返回到app/common/params模块中
-var _params = function(params){
-    if(window.require && typeof require === 'object'){
-        if(!require.config){
-            require.config = {};
-        }
-        var p = require.config['params'];
-        if (!p) {
-            require.config['params'] = params;
-        } else {
-            for (var key in params) {
-                p[key] = params[key];
-            }
-        }
-    }
-};
-var require = {
-    //对不是AMD模式的库，调用shim   //默认BaseUrl为当前页
-    baseUrl: "/angular/angular1/js",
-    paths: {
-        "angular":"angular.min"
-    },
-    shim :{
-        "angular" : {
-            exports : "angular"
-        },
-        //这句相当于define( "jquery" ,[] ,function(){ return jQuery } ),调用jquery文件，返回jQuery对象
-        "jquery" :{
-            exports : "jQuery"
-        }
-
-    }
-}
-
-
-
-
 var requirejs, require, define;
 (function (global) {
     var req, s, head, baseElement, dataMain, src,
