@@ -2,31 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Deferred</title>
+    <title>CallBack</title>
     <script type="text/javascript" src="../2.0.3.js"></script>
 </head>
 <body>
-    <input type="button" value="resolve">
-    <input type="button" value="done">
+    <input type="button" value="add">
+    <input type="button" value="fire">
     <p>
-        dfd.resolve()调用一次</br>
-        dfd.done可以执行多次</br>
-        不符合业务场景
+        业务场景:</br>
+        只能够在fire的时候，调用回调函数fn1</br>
+        每次都只对一个fn1回调函数调用
     </p>
 </body>
 <script type="text/javascript">
-    var dfd;
-    var resolveBtn = $('input[value=resolve]');
-    var doneBtn = $('input[value=done]');
-    resolveBtn.click(function(){
-        dfd = $.Deferred();
-        dfd.resolve();
+    callbacks = $.Callbacks();
+    var addBtn = $('input[value=add]');
+    var fireBtn = $('input[value=fire]');
+    var fn1 = function(){
+        console.log('调用add');
+    };
+    addBtn.click(function(){
+        callbacks.add(fn1);
     });
 
-    doneBtn.click(function(){
-        dfd.done(function(){
-            console.log('已经完成了');
-        });
+    fireBtn.click(function(){  
+        callbacks.fire();
+        callbacks.remove(fn1);
     });
 
 
