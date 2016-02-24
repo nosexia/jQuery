@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CallBack</title>
+    <title>修改Callbacks</title>
     <script type="text/javascript" src="../2.0.3.js"></script>
 </head>
 <body>
@@ -10,7 +10,7 @@
     <input type="button" value="fire">
     <p>
         业务场景:</br>
-        只能够在fire的时候，调用回调函数fn1</br>
+        只能够在fire的时候，调用回调函数fn1（修改文件名为Callbacks.html）</br>
         每次都只对一个fn1回调函数调用
     </p>
 </body>
@@ -22,6 +22,7 @@
         console.log('调用add');
     };
     addBtn.click(function(){
+        
         callbacks.add(fn1);
     });
 
