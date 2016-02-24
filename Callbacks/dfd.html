@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deferred</title>
+    <script type="text/javascript" src="../2.0.3.js"></script>
+</head>
+<body>
+    <input type="button" value="resolve">
+    <input type="button" value="done">
+    <p>
+        dfd.resolve()调用一次</br>
+        dfd.done可以执行多次</br>
+        不符合业务场景
+    </p>
+</body>
+<script type="text/javascript">
+    var dfd;
+    var resolveBtn = $('input[value=resolve]');
+    var doneBtn = $('input[value=done]');
+    resolveBtn.click(function(){
+        dfd = $.Deferred();
+        dfd.resolve();
+    });
+
+    doneBtn.click(function(){
+        dfd.done(function(){
+            console.log('已经完成了');
+        });
+    });
+
+
+</script>
+</html>
