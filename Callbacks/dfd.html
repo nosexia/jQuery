@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dfd</title>
+</head>
+<body>
+   
+使用dfd对象处理异步</br>
+fn1的返回对象必须是一个dfd对象</br>
+执行dfd.resolve()后，触发done方法
+</body>
+<script type="text/javascript" src="../2.0.3.js"></script>
+<script type="text/javascript">
+    
+    var fn1 = function(boolean){
+        var dfd = $.Deferred();
+        if(boolean){
+            // 异步成功处理
+            setTimeout(function(){
+                dfd.resolve();    
+            }, 1000);
+            
+        }else{
+            // 失败
+            setTimeout(function(){
+                dfd.reject();    
+            }, 1000);
+            
+        }
+        return dfd;
+    };
+
+    fn1(false).done(function(){
+        console.log('成功了');
+    }).fail(function(){
+        console.log('失败了');
+    });
+</script>
+</html>
