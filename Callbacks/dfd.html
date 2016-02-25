@@ -2,39 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>dfd</title>
+    <title>ajax方法加入promise对象(类似dfd)</title>
 </head>
 <body>
-   
-使用dfd对象处理异步</br>
-fn1的返回对象必须是一个dfd对象</br>
-执行dfd.resolve()后，触发done方法
+   1.ajax方法在加入dfd对象，返回promise对象，和dfd类似</br>
+   2.请求成功时，执行promise.resolve(),执行回调函数done</br>
+   3.请求失败，执行promose.reject(),执行回调函数fail
 </body>
 <script type="text/javascript" src="../2.0.3.js"></script>
 <script type="text/javascript">
     
-    var fn1 = function(boolean){
-        var dfd = $.Deferred();
-        if(boolean){
-            // 异步成功处理
-            setTimeout(function(){
-                dfd.resolve();    
-            }, 1000);
-            
-        }else{
-            // 失败
-            setTimeout(function(){
-                dfd.reject();    
-            }, 1000);
-            
-        }
-        return dfd;
-    };
-
-    fn1(false).done(function(){
-        console.log('成功了');
-    }).fail(function(){
-        console.log('失败了');
-    });
+$.ajax({
+    url: 'fire.js'
+}).done(function(){
+    console.log('请求成功');
+}).fail(function(error){
+    console.log(error);
+});
 </script>
 </html>
