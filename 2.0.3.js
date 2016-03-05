@@ -6842,7 +6842,7 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 
     var inspected = {},
         seekingTransport = ( structure === transports );
-
+    console.log(options.url);    
     function inspect( dataType ) {
         var selected;
         inspected[ dataType ] = true;
@@ -7841,7 +7841,8 @@ jQuery.ajaxTransport(function( options ) {
                 callback = xhrCallbacks[( id = xhrId++ )] = callback("abort");
                 // Do send the request
                 // This may raise an exception which is actually
-                // handled in jQuery.ajax (so no try/catch here)
+                // handled in jQuery.ajax (so no try/catch here)                
+                // 发送异步请求
                 xhr.send( options.hasContent && options.data || null );
             },
             abort: function() {

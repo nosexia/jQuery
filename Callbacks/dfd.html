@@ -5,19 +5,18 @@
     <title>ajax方法加入promise对象(类似dfd)</title>
 </head>
 <body>
-   1.ajax方法在加入dfd对象，返回promise对象，和dfd类似</br>
-   2.请求成功时，执行promise.resolve(),执行回调函数done</br>
-   3.请求失败，执行promose.reject(),执行回调函数fail
+   <input type="button" value="dfd_done">
 </body>
 <script type="text/javascript" src="../2.0.3.js"></script>
 <script type="text/javascript">
-    
-$.ajax({
-    url: 'fire.js'
-}).done(function(){
-    console.log('请求成功');
-}).fail(function(error){
-    console.log(error);
-});
+
+var dfd = $.Deferred();
+dfd.resolve();
+$('[type=button]').click(function(){
+    dfd.done(function(){
+        console.log('1111');
+    });
+});    
+
 </script>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.ajax分析</title>
+</head>
+<body>
+    1.ajax方法,get提交 </br>
+    index.html请求分析:</br>
+    Query String Parameters</br>
+    name: nose
+
+
+    ajax怎么做到的</br>
+    其实很简单，直接在url后面加上参数url+ '?name=nose'
+</body>
+<script type="text/javascript" src="../2.0.3.js"></script>
+<script type="text/javascript">
+    $.ajax({
+        url: '../index.html',
+        data: {'name':'nose'}
+    });
+</script>
+</html>
