@@ -2,21 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>多个jQuery版本时解决冲突的方式</title>
 </head>
 <body>
-<form action="/">
-    <input type="text" placeholder='搜搜'>
-    <input type="text" value="test">
-    <input type="submit" value="提交">
-</form>
+1.执行jquery-1.4.1.js</br>
+window.jQuery = window.$ = jQuery</br>
+
+2.执行jquery-1.9.1.js</br>
+window.jQuery = window.$ = jQuery</br>
+此时的$指向了新声明的类jQuery</br>
+$.fn也是指向了新的jQuery.fn = jQuery.prototype;</br>
+
+
+//@todo，怎么保证jquery-1.9.1.js执行之后,window.$任然指向第一个jQuery类 ！！！important</br>
+
+
+要点，执行完了第一个jQuery之后</br>
+var _$ = window.$;      // jQuery闭包中的变量_$指向了全局的$</br>
+
+要点, 执行完了第二个jQuery之后
+var _$ = window.$      // jQuery闭包中的变量_$指向第一个jQuery类
+
+
+    noConflict: function( deep ) {
+        window.$ = _$;
+
+        if ( deep ) {
+            window.jQuery = _jQuery;
+        }
+
+        return jQuery;
+    },
+
+
 </body>
-<script type="text/javascript" src="jquery-1.4.min.js"></script>
-<script type="text/javascript" src="jquery.placeholder.js"></script>
-<script>
-    $('body').find('input').placeholder({
-        customClass : 'gray01'
-    });
+<script type="text/javascript" src="jquery-1.4.1.js"></script>
+<script type="text/javascript" src="noConflict/js/lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+
+<script type="text/javascript">   
+$.noConflict();
+console.log($.cookie);
 </script>
 
 </html>

@@ -6842,7 +6842,6 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 
     var inspected = {},
         seekingTransport = ( structure === transports );
-    console.log(options.url);    
     function inspect( dataType ) {
         var selected;
         inspected[ dataType ] = true;
@@ -7157,6 +7156,7 @@ jQuery.extend({
         deferred.promise( jqXHR ).complete = completeDeferred.add;
         jqXHR.success = jqXHR.done;
         jqXHR.error = jqXHR.fail;
+
 
         // Remove hash character (#7531: and string promotion)
         // Add protocol if not provided (prefilters might expect it)
